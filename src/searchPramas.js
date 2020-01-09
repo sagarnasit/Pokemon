@@ -1,15 +1,24 @@
 import React, { useState, useEffect, useContext } from "react";
 import useDropdown from "./useDropdown";
+import Results from './Result';
 
 export default function SearchParams({ api, pokemons }) {
 
 
     const [types, setTypes] = useState([]);
+    const [result, setResult] = useState(pokemons);
     const [type, TypesDropDown, setType] = useDropdown('Type', 'normal', types);
 
     async function requestPets() {
 
-        console.log(type);
+        if ('' != type) {
+            const typeResult = await fetch(`https://pokeapi.co/api/v2/type/${type}`).then((data) => data.json());
+            const res = typeResult.pokemon.map(pokemon => pokemons[`${pokemon.pokemon.name}`]);
+
+            // console.log(pokemons['pidgeot']);
+            setResult(res);
+
+        }
 
 
     }
@@ -39,6 +48,7 @@ export default function SearchParams({ api, pokemons }) {
                 <TypesDropDown />
                 <button >Submit</button>
             </form>
+            <Results pokemons={result} />
         </div>
     );
 }

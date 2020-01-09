@@ -12,13 +12,15 @@ const App = () => {
         setAPI(api);
 
         const getPokemons = async () => {
+            const media = 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/';
             const result = await api.getPokemonsList({
-                limit: 963,
+                limit: 1000,
                 offset: 0
             });
             let poks = [];
             result.results.map((pokemon, i) => {
-                poks[i] = pokemon;
+                const { name, url } = pokemon;
+                poks[name] = { name, url, media: `${media}${i + 1}.png` };
             });
 
             setPokemons(poks);
