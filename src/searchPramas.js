@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import useDropdown from "./useDropdown";
 import Results from './Result';
 
-export default function SearchParams({ api, pokemons }) {
+export default function SearchParams({ pokemons }) {
 
 
     const [types, setTypes] = useState([]);
@@ -25,16 +25,17 @@ export default function SearchParams({ api, pokemons }) {
 
     useEffect(() => {
 
-        if (null !== api) {
-            const pokemonsTypes = async () => {
-                let pokeTypes = await api.getTypesList({ offset: 0, limit: 20 });
+        const pokemonsTypes = async () => {
 
-                setTypes(pokeTypes.results.map(type => type.name));
-            }
+            const result = await fetch(`https://pokeapi.co/api/v2/type`).then((data) => data.json());
 
-            pokemonsTypes();
+            setTypes(result.results.map(type => type.name));
+
         }
-    }, [api])
+
+        pokemonsTypes();
+
+    }, [])
 
     return (
         <div className="search-params">
