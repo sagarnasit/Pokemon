@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { render } from "react-dom";
 import { Router, Link } from "@reach/router";
 import SearchParam from './searchPramas';
+import Details from './Details';
+
 const App = () => {
 
     const [pokemons, setPokemons] = useState([]);
@@ -24,8 +26,10 @@ const App = () => {
 
     return (
         <>
-            <div>Hello World!</div>
-            <SearchParam pokemons={pokemons} />
+            <Router>
+                <SearchParam pokemons={pokemons} path="/" />
+                <Details path="/details/:name" />
+            </Router>
         </>
     );
 };

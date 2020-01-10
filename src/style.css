@@ -84,16 +84,6 @@ body {
   text-overflow: ellipsis;
 }
 
-header > a,
-#root > div > h1 {
-  display: inline-block;
-  background-image: url(http://static.frontendmasters.com/resources/2019-05-02-complete-intro-react-v5/image-logo.png);
-  width: 279px;
-  height: 76px;
-  overflow: hidden;
-  text-indent: -9999px;
-}
-
 .pet h2 {
   white-space: nowrap;
   font-weight: normal;
@@ -131,17 +121,50 @@ header {
   font-size: 60px;
   margin: 5px 0px;
 }
+.label {
+  font-size: 30px;
+  color: #333;
+  font-weight: 800;
+}
+
+.weight,
+.height {
+  font-size: 30px;
+  color: darkslategrey;
+  font-weight: bold;
+  margin-left: 15px;
+  margin-right: 50px;
+}
+
+.flex {
+  display: flex;
+  justify-content: center;
+}
 
 .details h2 {
   text-align: center;
   margin: 5px 0px 20px 0px;
 }
 
+.abilities {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.abilities h2 {
+  font-size: 30px;
+  color: #333;
+}
+
+.abilities p {
+  font-size: 23px;
+  color: darkslategrey;
+}
 .carousel {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height: 400px;
+  height: 200px;
   margin-top: 8px;
 }
 

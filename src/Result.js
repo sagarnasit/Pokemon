@@ -10,7 +10,7 @@ const Results = ({ pokemons }) => {
                     pokemons.map(pokemon => (
                         <Pet
                             key={pokemon.name}
-                            name={pokemon.name}
+                            name={pokemon.name.toUpperCase()}
                             media={pokemon.media}
                         />
                     ))
