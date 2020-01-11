@@ -4,8 +4,6 @@ class Carousel extends React.Component {
 
     render() {
         const { front_default, front_shiny, back_default, back_shiny } = this.props.media;
-        console.log(this.props.media);
-
 
         return (
             <div className="carousel">
