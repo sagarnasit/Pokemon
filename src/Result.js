@@ -32,7 +32,7 @@ const Result = ({ detail }) => {
                         <p key={i}>{ability.ability.name}</p>
                     ))}
                 </div>
-                {moves && <h2>Number of Moves: {moves.length}</h2>}
+                {moves && <h2>{name} can perform <i>{moves.length}</i> diffrent moves.</h2>}
             </>
         );
     }

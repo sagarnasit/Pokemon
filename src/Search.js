@@ -12,7 +12,7 @@ const Search = () => {
     }
 
     return (
-        <form name="search" onSubmit={searchHandler} >
+        <form name="search" onSubmit={searchHandler} className="search-form" >
             <input
                 id='search'
                 name='search'
@@ -21,7 +21,7 @@ const Search = () => {
                 onChange={e => setSearch(e.target.value)}
                 onBlur={e => setSearch(e.target.value)}
             />
-            <button type="submit">Search</button>
+            <button className="searchButton" type="submit">Search</button>
         </form>
     );
 }

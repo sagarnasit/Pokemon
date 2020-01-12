@@ -127,20 +127,25 @@ header {
   font-weight: 800;
 }
 
+.search-form {
+  display: flex;
+  justify-content: center;
+  width: 50%;
+  margin: 0 auto;
+}
 .search-form input {
   padding: 10px;
   font-size: 17px;
-  float: left;
   width: 80%;
 }
-.search-form button {
-  float: left;
+.search-form button.searchButton {
   width: 20%;
   padding: 10px;
   font-size: 17px;
-  border: 1px solid grey;
-  border-left: none;
   cursor: pointer;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-left: 0;
 }
 
 .weight,
