@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import useDropdown from "./useDropdown";
-import Results from './Result';
+import Results from './Pokemon';
 
 export default function SearchParams({ pokemons }) {
 
@@ -19,7 +19,6 @@ export default function SearchParams({ pokemons }) {
             setResult(res);
 
         }
-
 
     }
 

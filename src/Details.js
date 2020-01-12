@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Carousel from './Carousel';
+import Result from './Result';
 import Search from './Search';
+import ErrorBoundary from "./ErrorBoundary";
 
 const Details = ({ name }) => {
 
@@ -10,13 +11,7 @@ const Details = ({ name }) => {
     useEffect(() => {
         const getDetails = async () => {
 
-            try {
-                const result = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`).then((data) => data.json());
-            } catch (e) {
-                console.log(e);
-
-            }
-            console.log(result);
+            const result = await fetch(`https://pokeapi.co/api/v2/pokemon/${name}`).then((data) => data.json()).catch((e) => ({ notFound: true, name: name }));
 
             setLoading(false)
             setDetail(result);
@@ -33,30 +28,17 @@ const Details = ({ name }) => {
         return (
             <div className="details">
                 <Search />
-                <h1>{detail.name && detail.name.toUpperCase()}</h1>
-                {detail.sprites !== undefined ? <Carousel media={detail.sprites} /> : ""}
-
-                <div className="flex">
-                    <div>
-                        <span className="label">Weight: </span><span className="weight">{detail.weight}</span>
-                    </div>
-                    <div>
-                        <span className="label">Height: </span><span className="height">{detail.height}</span>
-                    </div>
-                </div>
-
-                <div className="abilities">
-                    <h2>Abilities</h2>
-                    {detail.abilities && detail.abilities.map((ability, i) => (
-                        <p key={i}>{ability.ability.name}</p>
-                    ))}
-                </div>
-                {detail.moves && <h2>Number of Moves: {detail.moves.length}</h2>}
+                <Result detail={detail} />
             </div>
-
         )
     }
 
 }
 
-export default Details;
+export default function DetailsWithErrorBoundary(props) {
+    return (
+        <ErrorBoundary>
+            <Details {...props} />
+        </ErrorBoundary>
+    );
+}

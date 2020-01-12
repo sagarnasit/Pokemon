@@ -1,22 +1,41 @@
-import React from "react";
-import Pet from "./Pet";
+import React from 'react';
+import Carousel from './Carousel';
 
-const Results = ({ pokemons }) => {
-    return (
-        <div className="search">
-            {pokemons.length === 0 ? (
-                <h1>No pokemons Found</h1>
-            ) : (
-                    pokemons.map(pokemon => (
-                        <Pet
-                            key={pokemon.name}
-                            name={pokemon.name}
-                            media={pokemon.media}
-                        />
-                    ))
-                )}
-        </div>
-    );
-};
+const Result = ({ detail }) => {
 
-export default Results;
+    const { name, weight, height, sprites, abilities, moves, notFound = false } = detail;
+
+    if (notFound) {
+        return (
+            <>
+                <h1>Sorry! No Pokemon with name:{name} </h1>
+            </>
+        )
+    } else {
+        return (
+            <>
+                <h1>{name !== undefined ? name.toUpperCase() : ""}</h1>
+                {sprites !== undefined ? <Carousel media={sprites} /> : ""}
+
+                <div className="flex">
+                    <div>
+                        <span className="label">Weight: </span><span className="weight">{weight}</span>
+                    </div>
+                    <div>
+                        <span className="label">Height: </span><span className="height">{height}</span>
+                    </div>
+                </div>
+
+                <div className="abilities">
+                    <h2>Abilities</h2>
+                    {abilities && abilities.map((ability, i) => (
+                        <p key={i}>{ability.ability.name}</p>
+                    ))}
+                </div>
+                {moves && <h2>Number of Moves: {moves.length}</h2>}
+            </>
+        );
+    }
+}
+
+export default Result;

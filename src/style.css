@@ -127,6 +127,22 @@ header {
   font-weight: 800;
 }
 
+.search-form input {
+  padding: 10px;
+  font-size: 17px;
+  float: left;
+  width: 80%;
+}
+.search-form button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
 .weight,
 .height {
   font-size: 30px;
